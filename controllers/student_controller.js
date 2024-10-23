@@ -7,7 +7,7 @@ module.exports = {
             const student = new Student(req.body);
             const message = await student.save();
 
-            res.send({ message: "New Student added Successfully" })
+            res.send({ message: "New Student Added Successfully" })
         } catch (error) {
             console.log(error.message);
         }
@@ -36,8 +36,11 @@ module.exports = {
         const id = req.params.id
 
         try {
-            const Student = await Student.findByIdAndDelete(id)
-            res.send(student);
+            const student = await Student.findByIdAndDelete(id)
+            const message = await student;
+
+            res.send({ message: "Student Deleted Successfully" })
+
         } catch (error) {
             console.log(error.message);
         }
