@@ -1,12 +1,14 @@
-require('dotenv').config();
-require('./helpers/init_mongodb');
 const express = require('express');
-const routes = require('./routes/api');
+const routes = require('./routes/StudentRoute');
 const app = express();
-app.use(express.json());
+require('dotenv').config();
 
+require('./helpers/init_mongodb');
 
 app.use(routes);
+app.use(express.json());
+// app.use(studentro)
+
 
 //handling 404 error
 app.use((req, res, next) => {
@@ -26,7 +28,6 @@ app.use((err, req, res, next) => {
         }
     })
 })
-
 
 app.listen(process.env.PORT || 4000, function () {
     console.log('Now listening for requests on https://localhost:4000');
