@@ -1,6 +1,7 @@
 const express = require('express');
 const studentRoutes = require('./routes/StudentRoute');
 const courseRoutes = require('./routes/CourseRoutes')
+const userRoutes = require('./routes/UserRoutes')
 const app = express();
 require('dotenv').config();
 
@@ -8,7 +9,8 @@ require('./helpers/init_mongodb');
 
 app.use(studentRoutes);
 app.use(express.json());
-app.use(courseRoutes)
+app.use(courseRoutes);
+app.use(userRoutes);
 
 
 //handling 404 error
