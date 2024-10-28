@@ -1,4 +1,5 @@
 const JWT = require('jsonwebtoken');
+const creatError = require('http-errors');
 
 module.exports = {
     signAccessToken: (UserId) => {
