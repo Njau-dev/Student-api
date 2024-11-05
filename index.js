@@ -1,14 +1,19 @@
 const express = require('express');
+const cors = require('cors');
 const studentRoutes = require('./routes/StudentRoute');
 const courseRoutes = require('./routes/CourseRoutes')
 const userRoutes = require('./routes/UserRoutes')
-const app = express();
-require('dotenv').config();
 
+const app = express();
+app.use(cors({ origin: 'http://localhost:5174' }));
+// const allowedOrigins = ['http://localhost:5173', 'http://localhost:5174']
+
+
+require('dotenv').config();
 require('./helpers/init_mongodb');
 
-app.use(studentRoutes);
 app.use(express.json());
+app.use(studentRoutes);
 app.use(courseRoutes);
 app.use(userRoutes);
 
